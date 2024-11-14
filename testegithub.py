@@ -1,4 +1,6 @@
 import streamlit as st
+import pandas as pd
+
 st.write('Hello World')
 
 st.title("teste")
@@ -38,8 +40,7 @@ st.error("Erro!")
 st.warning("Advertência")
 st.info("Esta é uma informação")
 
-import streamlit as st
-import pandas as pd
+# aula 14_11
 
 df = pd.DataFrame({
     'nomeServidor': ['Adriana', 'Monica', 'Samara'],
