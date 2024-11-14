@@ -1,9 +1,8 @@
 import streamlit as st
 import pandas as pd
 
-st.write('Hello World')
-
-st.title("teste")
+st.title("Aulas testes Streamlit e Phyton - Módulo 3 ENAP")
+st.write('Aula 13/11/2024')
 
 st.title("Este é o título do app")
 st.header("Este é o subtítulo")
@@ -41,6 +40,7 @@ st.warning("Advertência")
 st.info("Esta é uma informação")
 
 # aula 14_11
+st.write('Aula 13/11/2024')
 
 df = pd.DataFrame({
     'nomeServidor': ['Adriana', 'Monica', 'Samara'],
