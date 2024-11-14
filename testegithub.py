@@ -1,7 +1,8 @@
 import streamlit as st
 import pandas as pd
 
-st.title("Aulas testes Streamlit e Phyton - Módulo 3 ENAP")
+st.title("Aulas testes Streamlit e Phyton")
+st.header("Módulo 3 ENAP")
 st.write('Aula 13/11/2024')
 
 st.title("Este é o título do app")
