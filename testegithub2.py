@@ -31,3 +31,6 @@ st.write(df.head(numero))
 
 st.header('Os dez municípios com mais comunidades quilombolas')
 st.bar_chart(df['NM_MUNIC'].value_counts()[:10])
+
+st.metric('# Municípios', len(df['NM_MUNIC'].unique()))
+st.metric('# Comunidades', len(df['NM_AGLOM'].unique()))
