@@ -1,6 +1,7 @@
 import requests
 import pandas as pd
 import streamlit as st
+import seaborn as sns
 
 url='https://dadosabertos.camara.leg.br/api/v2/deputados?siglaSexo=F&ordem=ASC&ordenarPor=nome'
 
