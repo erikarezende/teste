@@ -1,6 +1,5 @@
 import requests
 import pandas as pd
-pip install streamlit
 import streamlit as st
 
 url='https://dadosabertos.camara.leg.br/api/v2/deputados?siglaSexo=F&ordem=ASC&ordenarPor=nome'
