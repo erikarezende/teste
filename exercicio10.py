@@ -50,20 +50,24 @@ df_total
 
 df_total['Total_de_deputados'] = df_total['Quantidade_de_Mulheres'] + df_total['Quantidade_de_Homens']
 
-# Criando o gráfico com Seaborn (gráfico de barras)
-df_total_melted = df_total.melt(id_vars='Estado', value_vars=['Quantidade_de_Homens', 'Quantidade_de_Mulheres'], var_name='Sexo', value_name='Quantidade')
+st.title('Quantidade de Deputados Homens e Mulheres por UF')
 
-# Criando o gráfico
-plt.figure(figsize=(10, 6))
-sns.barplot(x='Estado', y='Quantidade', hue='Sexo', data=df_total_melted, palette="Set2")
+# seleção dos estados
+estados = df_total['Estado'].unique()
+estadoFiltro = st.selectbox(
+    'Qual estado selecionar?',
+     estados)
+dadosFiltrados = df_total[df_total['Estado'] == estadoFiltro]
+if st.checkbox('Mostrar tabela'):
+  st.write(dadosFiltrados)
 
-# Adicionando título e rótulos
-plt.title('Quantidade de Homens e Mulheres Deputados por Estado')
-plt.xlabel('Estado')
-plt.ylabel('Quantidade de Deputados')
+qtdeMulheresDepUf = (df_total['Quantidade_de_Mulheres'].sum())
+st.write("A quantidade de Deputadas é " + str(qtdeMulheresDepUf))
 
-# Exibindo o gráfico
-plt.tight_layout()
+qtdeHomensDepUf = (df_total['Quantidade_de_Homens'].sum())
+st.write("A quantidade de Deputados é " + str(qtdeHomensDepUf))
+
+st.header('Quantidade de Deputados e Deputadas por UF')
 plt.show()
 
 st.bar_chart(df_total)
