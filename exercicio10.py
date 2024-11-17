@@ -21,9 +21,7 @@ df_uf_counts = uf_counts.reset_index()
 # Renomeando as colunas para tornar mais claro
 df_uf_counts.columns = ['Estado', 'Quantidade_de_Mulheres']
 
-# Exibindo o DataFrame
-print(df_uf_counts)
-
+#dados deputados homens por UF
 url2='https://dadosabertos.camara.leg.br/api/v2/deputados?siglaSexo=M&ordem=ASC&ordenarPor=nome'
 
 response_h = requests.get(url2).json()
@@ -43,25 +41,22 @@ df_uf_counts_h.columns = ['Estado', 'Quantidade_de_Homens']
 # Exibindo o DataFrame
 print(df_uf_counts_h)
 
-df_total = pd.merge(df_uf_counts, df_uf_counts_h, on='Estado', how='inner')
-
-df_total
+df_total = pd.merge(df_uf_counts, df_uf_counts_h, on='Estado', how='outer')
 
 #adicionando a coluna total de deputados
 
 df_total['Total_de_deputados'] = df_total['Quantidade_de_Mulheres'] + df_total['Quantidade_de_Homens']
 
-st.title('Quantidade de Deputados Homens e Mulheres por UF"')
+st.title('Quantidade de Deputados Homens e Mulheres por UF')
 
-# convertendo para numeros
+# Filtro por UF
 estados = df_total['Estado'].unique()
 estadoFiltro = st.selectbox(
     'Qual estado selecionar?',
      estados)
-dadosFiltrados = df_total[df_total['Estado'] == estadoFiltro]
+dadosFiltrados = df_total[df_total['estados'] == estadoFiltro]
 if st.checkbox('Mostrar tabela'):
-  st.write(dadosFiltrados)
-st.bar_chart(df_total, x="estadoFiltro", y=["Quantidade_de_Mulheres", "Quantidade_de_Homens"], color=["#FF0000", "#0000FF"])
+  st.bar_chart(df_total, x="estadoFiltro", y=["Quantidade_de_Mulheres", "Quantidade_de_Homens"], color=["#FF0000", "#0000FF"])
 
 st.header('Quantidade Total de Deputados Homens e Mulheres')
 
