@@ -49,7 +49,7 @@ df_total['Total_de_deputados'] = df_total['Quantidade_de_Mulheres'] + df_total['
 
 st.title('Quantidade de Deputados Homens e Mulheres por UF"')
 
-# convertendo para numeros
+# filtro por estado
 estados = df_total['Estado'].unique()
 estadoFiltro = st.selectbox(
     'Qual estado selecionar?',
@@ -58,22 +58,32 @@ dadosFiltrados = df_total[df_total['Estado'] == estadoFiltro]
 if st.checkbox('Mostrar tabela'):
   st.write(dadosFiltrados)
 
+df_filtrado_melted = dadosFiltrados.melt(id_vars='Estado', 
+                                         value_vars=['Quantidade_de_Mulheres', 'Quantidade_de_Homens'], 
+                                         var_name='Sexo', 
+                                         value_name='Quantidade')
+
+# Criando o gráfico de barras
+plt.figure(figsize=(10, 6))
+sns.barplot(x='Sexo', y='Quantidade', data=df_filtrado_melted, palette="Set2")
+
+# Adicionando título e rótulos
+plt.title(f'Quantidade de Mulheres e Homens Deputados no Estado de {estadoFiltro}')
+plt.xlabel('Sexo')
+plt.ylabel('Quantidade de Deputados')
+
+# Exibindo o gráfico no Streamlit
+st.pyplot(plt)
+
+
 st.header('Quantidade de Deputados e Deputadas por UF')
 
 st.bar_chart(df_total, x="Estado", y=["Quantidade_de_Mulheres", "Quantidade_de_Homens"], color=["#FF0000", "#0000FF"])
 
-#st.bar_chart(df_total, x="estadoFiltro", y=["Quantidade_de_Mulheres", "Quantidade_de_Homens"], color=["#FF0000", "#0000FF"])
-
-
-
-st.header('Quantidade Total de Deputados Homens e Mulheres')
+st.header('Quantidade de Deputados Homens e Mulheres')
 
 qtdeMulheresDepUf = (df_total['Quantidade_de_Mulheres'].sum())
 st.write("A quantidade de Deputadas é " + str(qtdeMulheresDepUf))
 
 qtdeHomensDepUf = (df_total['Quantidade_de_Homens'].sum())
 st.write("A quantidade de Deputados é " + str(qtdeHomensDepUf))
-
-st.header('Quantidade de Deputados e Deputadas por UF')
-
-st.bar_chart(df_total, x="Estado", y=["Quantidade_de_Mulheres", "Quantidade_de_Homens"], color=["#FF0000", "#0000FF"])
