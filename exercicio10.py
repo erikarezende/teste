@@ -15,3 +15,5 @@ plt.ylabel('Quantidade de Deputados')
 # Exibindo o gráfico
 plt.tight_layout()
 plt.show()
+
+st.pyplot(plt)
