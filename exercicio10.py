@@ -47,18 +47,20 @@ df_total = pd.merge(df_uf_counts, df_uf_counts_h, on='Estado', how='outer')
 
 df_total['Total_de_deputados'] = df_total['Quantidade_de_Mulheres'] + df_total['Quantidade_de_Homens']
 
-st.title('Quantidade de Deputados Homens e Mulheres por UF')
+st.title('Quantidade de Deputados Homens e Mulheres por UF"')
 
-# Filtro por UF
+# convertendo para numeros
 estados = df_total['Estado'].unique()
 estadoFiltro = st.selectbox(
     'Qual estado selecionar?',
      estados)
-dadosFiltrados = df_total[df_total['Estados'] == estadoFiltro]
+dadosFiltrados = df_total[df_total['Estado'] == estadoFiltro]
 if st.checkbox('Mostrar tabela'):
   st.write(dadosFiltrados)
-st.map(dadosFiltrados, latitude="Lat_d", longitude="Long_d")
-    
+
+st.header('Quantidade de Deputados e Deputadas por UF')
+
+st.bar_chart(df_total, x="Estado", y=["Quantidade_de_Mulheres", "Quantidade_de_Homens"], color=["#FF0000", "#0000FF"])
 
 #st.bar_chart(df_total, x="estadoFiltro", y=["Quantidade_de_Mulheres", "Quantidade_de_Homens"], color=["#FF0000", "#0000FF"])
 
