@@ -71,21 +71,5 @@ qtdeHomensDepUf = (df_total['Quantidade_de_Homens'].sum())
 st.write("A quantidade de Deputados é " + str(qtdeHomensDepUf))
 
 st.header('Quantidade de Deputados e Deputadas por UF')
-df_total_melted = df_total.melt(id_vars='Estado', 
-                                 value_vars=['Quantidade_de_Mulheres', 'Quantidade_de_Homens'], 
-                                 var_name='Sexo', 
-                                 value_name='Quantidade')
 
-
-# Criando o gráfico com Seaborn
-plt.figure(figsize=(10, 6))
-sns.barplot(x='Estado', y='Quantidade', hue='Sexo', data=df_total_melted, palette="Set2")
-
-# Adicionando título e rótulos
-plt.title('Quantidade de Mulheres e Homens Deputados por Estado')
-plt.xlabel('Estado')
-plt.ylabel('Quantidade de Deputados')
-
-# Exibindo o gráfico no Streamlit
-st.pyplot(plt)
-             
+st.bar_chart(df_total, x="Estado", y=["Quantidade_de_Mulheres", "Quantidade_de_Homens"], color=["#FF0000", "#0000FF"])
