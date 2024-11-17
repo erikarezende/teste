@@ -54,10 +54,15 @@ estados = df_total['Estado'].unique()
 estadoFiltro = st.selectbox(
     'Qual estado selecionar?',
      estados)
-dadosFiltrados = df_total[df_total['estados'] == estadoFiltro]
+dadosFiltrados = df_total[df_total['Estados'] == estadoFiltro]
 if st.checkbox('Mostrar tabela'):
-  st.write(estadoFiltro)
-st.bar_chart(df_total, x="estadoFiltro", y=["Quantidade_de_Mulheres", "Quantidade_de_Homens"], color=["#FF0000", "#0000FF"])
+  st.write(dadosFiltrados)
+st.map(dadosFiltrados, latitude="Lat_d", longitude="Long_d")
+    
+
+#st.bar_chart(df_total, x="estadoFiltro", y=["Quantidade_de_Mulheres", "Quantidade_de_Homens"], color=["#FF0000", "#0000FF"])
+
+
 
 st.header('Quantidade Total de Deputados Homens e Mulheres')
 
