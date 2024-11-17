@@ -56,7 +56,8 @@ estadoFiltro = st.selectbox(
      estados)
 dadosFiltrados = df_total[df_total['estados'] == estadoFiltro]
 if st.checkbox('Mostrar tabela'):
-  st.bar_chart(df_total, x="estadoFiltro", y=["Quantidade_de_Mulheres", "Quantidade_de_Homens"], color=["#FF0000", "#0000FF"])
+  st.write(estadoFiltro)
+st.bar_chart(df_total, x="estadoFiltro", y=["Quantidade_de_Mulheres", "Quantidade_de_Homens"], color=["#FF0000", "#0000FF"])
 
 st.header('Quantidade Total de Deputados Homens e Mulheres')
 
