@@ -47,7 +47,7 @@ df_total = pd.merge(df_uf_counts, df_uf_counts_h, on='Estado', how='outer')
 
 df_total['Total_de_deputados'] = df_total['Quantidade_de_Mulheres'] + df_total['Quantidade_de_Homens']
 
-st.title('Quantidade de Deputados Homens e Mulheres por UF"')
+st.title('Quantidade de Deputados Homens e Mulheres por UF')
 
 # filtro por estado
 estados = df_total['Estado'].unique()
