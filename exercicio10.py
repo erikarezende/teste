@@ -64,17 +64,13 @@ st.bar_chart(df_total, x="Estado", y=["Quantidade_de_Mulheres", "Quantidade_de_H
 
 st.header('Quantidade de Deputados Homens e Mulheres')
 
-st.bar_chart(df_total, x="Estado", y=["Quantidade_de_Mulheres", "Quantidade_de_Homens"], color=["#FF0000", "#0000FF"])
-
-st.header('Quantidade de Deputados Homens e Mulheres')
-
 qtdeMulheresDepUf = (df_total['Quantidade_de_Mulheres'].sum())
 st.write("A quantidade de Deputadas é " + str(qtdeMulheresDepUf))
 
 qtdeHomensDepUf = (df_total['Quantidade_de_Homens'].sum())
 st.write("A quantidade de Deputados é " + str(qtdeHomensDepUf))
 
-total = (df_total['Quantidade_de_Homens'] + ['Quantidade_de_Mulheres'])
+total = (df_total['Quantidade_de_Homens'] + df_total['Quantidade_de_Mulheres'])
 st.write("A quantidade total de Deputados é " + str(total))
 
 percentual_mulheres = (qtdeMulheresDepUf / total) * 100
