@@ -71,10 +71,8 @@ qtdeHomensDepUf = (df_total['Quantidade_de_Homens'].sum())
 st.write("A quantidade de Deputados é " + str(qtdeHomensDepUf))
 
 
-import requests
-import pandas as pd
-import streamlit as st
-import seaborn as sns
+st.header('teste 2')
+
 
 url='https://dadosabertos.camara.leg.br/api/v2/deputados?siglaSexo=F&ordem=ASC&ordenarPor=nome'
 
