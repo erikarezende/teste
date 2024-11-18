@@ -3,9 +3,6 @@ import pandas as pd
 import streamlit as st
 import seaborn as sns
 
-st.header('teste 2')
-
-
 url='https://dadosabertos.camara.leg.br/api/v2/deputados?siglaSexo=F&ordem=ASC&ordenarPor=nome'
 
 response = requests.get(url).json()
@@ -61,25 +58,11 @@ dadosFiltrados = df_total[df_total['Estado'] == estadoFiltro]
 if st.checkbox('Mostrar tabela'):
   st.write(dadosFiltrados)
 
-df_filtrado_melted = dadosFiltrados.melt(id_vars='Estado',
-                                         value_vars=['Quantidade_de_Mulheres', 'Quantidade_de_Homens'],
-                                         var_name='Sexo',
-                                         value_name='Quantidade')
-
-# Criando o gráfico de barras
-plt.figure(figsize=(10, 6))
-sns.barplot(x='Sexo', y='Quantidade', data=df_filtrado_melted, palette="Set2")
-
-# Adicionando título e rótulos
-plt.title(f'Quantidade de Mulheres e Homens Deputados no Estado de {estadoFiltro}')
-plt.xlabel('Sexo')
-plt.ylabel('Quantidade de Deputados')
-
-# Exibindo o gráfico no Streamlit
-st.pyplot(plt)
-
-
 st.header('Quantidade de Deputados e Deputadas por UF')
+
+st.bar_chart(df_total, x="Estado", y=["Quantidade_de_Mulheres", "Quantidade_de_Homens"], color=["#FF0000", "#0000FF"])
+
+st.header('Quantidade de Deputados Homens e Mulheres')
 
 st.bar_chart(df_total, x="Estado", y=["Quantidade_de_Mulheres", "Quantidade_de_Homens"], color=["#FF0000", "#0000FF"])
 
