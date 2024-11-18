@@ -70,11 +70,12 @@ st.write("A quantidade de Deputadas é " + str(qtdeMulheresDepUf))
 qtdeHomensDepUf = (df_total['Quantidade_de_Homens'].sum())
 st.write("A quantidade de Deputados é " + str(qtdeHomensDepUf))
 
-total = (df_total['Quantidade_de_Homens'] + df_total['Quantidade_de_Mulheres'])
+total = (df_total['Quantidade_de_Homens'].sum() + df_total['Quantidade_de_Mulheres'].sum())
 st.write("A quantidade total de Deputados é " + str(total))
 
 percentual_mulheres = (qtdeMulheresDepUf / total) * 100
 st.write('o percentual mulheres é ' + str(percentual_mulheres))
+print(percentual_mulheres)
 
 percentual_homens = (qtdeHomensDepUf / total) * 100
 st.write('o percentual homens é ' + str(percentual_homens))
